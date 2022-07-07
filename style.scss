@@ -51,15 +51,24 @@
 
 
 .main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    .main__game-window {
+      position: relative;
+    }
   
     .main__game-background {
         width: 22rem;
         height: auto;
+        z-index: 1;
     }
 
     .main__game-background-container {
         display: flex;
         justify-content: center;
+        z-index: 1;
     }
 
     .main__game-floor-container {
@@ -69,5 +78,23 @@
 
     .main__game-floor {
         width: 22rem;
+    }
+
+    .main__character-container {
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+      position: absolute;
+      bottom: 33.5%;
+      left: 35%;
+    }
+
+    .main__game-character {
+      width: 5rem;
+      height: auto;
+      z-index: 2;
+      position: fixed;
+      background-color: transparent;    
+
     }
 }
