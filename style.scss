@@ -53,12 +53,21 @@
 .main {
   
     .main__game-background {
-        width: 21rem;
+        width: 22rem;
         height: auto;
     }
 
     .main__game-background-container {
         display: flex;
         justify-content: center;
+    }
+
+    .main__game-floor-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main__game-floor {
+        width: 22rem;
     }
 }
