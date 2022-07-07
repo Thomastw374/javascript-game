@@ -25,3 +25,12 @@ function animateFloor() {
 }
 
 setInterval(animateFloor, 50);
+
+let k = 0
+const handleJump = (event) => {
+    clearInterval(animateCharacter)
+
+}
+
+
+document.addEventListener("keydown", handleJump)
