@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&family=Inter&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #2c2a2a;
+  font-family: "cormorant", "inter", sans-serif;
+}
+
+.header {
+  margin: 1.9rem;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin-bottom: 3.5rem;
+}
+.header .header__title {
+  font: "cormorant";
+  font-size: 1.3rem;
+}
+.header .header__title--alt-color {
+  color: #D9BEA5;
+}
+.header .header__rectangle-1 {
+  width: 1.56rem;
+  height: 0.06rem;
+  background: #ffffff;
+  margin-bottom: 0.2rem;
+}
+.header .header__rectangle-2 {
+  width: 1.13rem;
+  height: 0.06rem;
+  background: #ffffff;
+}
+.header .header__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header .header__menu-alternative {
+  display: none;
+}
+
+.main .main__game-background {
+  width: 21rem;
+  height: auto;
+}
+.main .main__game-background-container {
+  display: flex;
+  justify-content: center;
+}
