@@ -28,7 +28,9 @@ setInterval(animateFloor, 50);
 
 let k = 0
 const handleJump = (event) => {
+  console.log("event triggered")
     clearInterval(animateCharacter)
+
 
 }
 
