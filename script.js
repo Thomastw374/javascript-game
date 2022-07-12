@@ -29,7 +29,6 @@ function animateObstacles() {
     obstacleContainer.id = "";
   }, 900);
   l += 1
-  console.log(l)
   if (l == 6) {
     l -= 6
   }
@@ -75,3 +74,9 @@ document.addEventListener("keydown", function () {
   charRunTimer = clearInterval(animateCharacter);
   handleJump();
 });
+
+function getLeft() {
+  return console.log(getComputedStyle(obstacleContainer).left) +  console.log(getComputedStyle(obstacleContainer).bottom)
+}
+// can process these to get my x and y for collision boxes, on collision we'll add in an element that covers the screen. Then a retry button that sets the points to 0 and clears it. Have difficulty scale with point count.
+setInterval(getLeft, 500)
