@@ -1,6 +1,6 @@
 const characterSprite = document.querySelector(".main__game-character");
 const floorSprite = document.querySelector(".main__game-floor");
-const charPositionY = document.querySelector(".main__character-container").style
+let charPositionY = document.querySelector(".main__character-container").style
   .bottom;
 
 // let i = 0;
@@ -30,6 +30,8 @@ const charPositionY = document.querySelector(".main__character-container").style
 
 let k = 0;
 const handleJump = (event) => {
+  console.log("event triggered")
+  setTimeout()
   for (k = 0; k < 20; k++) {
     if (k < 10) {
       charPositionY = 33.5 + k + "%";
@@ -39,4 +41,4 @@ const handleJump = (event) => {
   }
 };
 
-characterSprite.addEventListener("onclick", handleJump);
+document.addEventListener("keypress", handleJump);
