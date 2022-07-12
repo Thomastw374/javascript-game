@@ -3,6 +3,7 @@ const characterContainer = document.querySelector(".main__character-container");
 const floorSprite = document.querySelector(".main__game-floor");
 const obstacleContainer = document.querySelector(".main__obstacle-container")
 const obstacleSprite = document.querySelector(".main__game-obstacle")
+const pointCounter = document.querySelector(".main__point-counter")
 
 // cycles through the sprites.
 let i = 0;
@@ -18,10 +19,11 @@ function animateCharacter() {
 let charRunTimer = setInterval(animateCharacter, 100);
 
 let l = 0;
-
+let pointCount = 0;
 function animateObstacles() {
   obstacleSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/obstacles/${l}.png`;
   obstacleContainer.id = "animate-obstacle"
+  obstacleContainer.className = `main__obstacle-container main__obstacle-container--${l}`;
   // also have a different class for each item corresponding to the correct css. Because pics come in at diff heights need to change css.
   setTimeout(function () {
     obstacleContainer.id = "";
@@ -31,6 +33,12 @@ function animateObstacles() {
   if (l == 6) {
     l -= 6
   }
+
+  setTimeout(function () {
+    pointCount += 10;
+  }, 900);
+  
+  pointCounter.innerHTML = `POINTS: ${pointCount}`
 }
 
 setInterval(animateObstacles, 1200)

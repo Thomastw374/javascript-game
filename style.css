@@ -86,8 +86,25 @@
   justify-content: center;
   z-index: 2;
   position: absolute;
-  bottom: 22.5%;
   left: 120%;
+}
+.main .main__obstacle-container--0 {
+  bottom: 22.5%;
+}
+.main .main__obstacle-container--1 {
+  bottom: 33.6%;
+}
+.main .main__obstacle-container--2 {
+  bottom: 21.5%;
+}
+.main .main__obstacle-container--3 {
+  bottom: 16.7%;
+}
+.main .main__obstacle-container--4 {
+  bottom: 23%;
+}
+.main .main__obstacle-container--5 {
+  bottom: 22.5%;
 }
 .main .main__game-obstacle {
   width: 5rem;
@@ -101,6 +118,18 @@
   height: 24.5rem;
   background-color: #2c2a2a;
   z-index: 3;
+}
+.main .main__point-counter {
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  position: absolute;
+  left: 70%;
+  bottom: 90%;
+  background-color: transparent;
+  color: yellow;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 #animate-jump {
@@ -118,10 +147,10 @@
     bottom: 33.5%;
   }
   30% {
-    bottom: 53.5%;
+    bottom: 55.5%;
   }
   70% {
-    bottom: 53.5%;
+    bottom: 55.5%;
   }
   100% {
     bottom: 33.5%;
@@ -133,10 +162,10 @@
     bottom: 33.5%;
   }
   30% {
-    bottom: 53.5%;
+    bottom: 55.5%;
   }
   70% {
-    bottom: 53.5%;
+    bottom: 55.5%;
   }
   100% {
     bottom: 33.5%;
