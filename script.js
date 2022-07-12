@@ -1,6 +1,6 @@
 const characterSprite = document.querySelector(".main__game-character");
 const floorSprite = document.querySelector(".main__game-floor");
-let charPositionY = document.getElementById("game-character");
+let charPositionY = document.querySelector(".main__character-container")
 
 console.log(getComputedStyle(charPositionY).getPropertyValue('bottom'))
 
@@ -37,9 +37,9 @@ const handleJump = (event) => {
 function jumpIfElse() {
   if (k < 10) {
     charPositionY.style.setProperty("bottom", 33.5 + k + "%");
-  } else if (k > 10) {
+  } else if (20 > k >= 10) {
     charPositionY.style.setProperty("bottom", 43.5 - (k - 10) + "%");
-  } else if ((k = 20)) {
+  } else {
     k -= 20;
   }
 }

@@ -98,3 +98,14 @@
 
     }
 }
+
+#animate {
+  animation: jump 500ms infinite;
+}
+
+@keyframes jump {
+  0%{bottom: 33.5%}
+  30%{bottom: 53.5%}
+  70%{bottom: 53.5%}
+  100%{bottom: 33.5%}
+}

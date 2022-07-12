@@ -81,3 +81,38 @@
   position: fixed;
   background-color: transparent;
 }
+
+#animate {
+  -webkit-animation: jump 500ms infinite;
+          animation: jump 500ms infinite;
+}
+
+@-webkit-keyframes jump {
+  0% {
+    bottom: 33.5%;
+  }
+  30% {
+    bottom: 53.5%;
+  }
+  70% {
+    bottom: 53.5%;
+  }
+  100% {
+    bottom: 33.5%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    bottom: 33.5%;
+  }
+  30% {
+    bottom: 53.5%;
+  }
+  70% {
+    bottom: 53.5%;
+  }
+  100% {
+    bottom: 33.5%;
+  }
+}
