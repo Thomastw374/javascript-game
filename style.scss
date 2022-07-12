@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #2c2a2a;
+    background-color: $background-color;
     font-family: "cormorant", "inter", sans-serif;
 }
 
@@ -97,4 +97,56 @@
       background-color: transparent;    
 
     }
+
+    .main__obstacle-container {
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+      position: absolute;
+      bottom: 22.5%;
+      left: 110%;
+    }
+
+    .main__game-obstacle {
+      width: 5rem;
+      height: auto;
+      z-index: 2;
+      position: fixed;
+      background-color: transparent;    
+
+    }
+
+    .main__obstacle-hider {
+      width: 100%;
+      height: 24.5rem;
+      background-color: $background-color;
+      z-index: 3;
+    }
+}
+
+#animate-jump {
+  animation: jump 600ms infinite;
+}
+
+#animate-obstacle {
+  animation: travel-left 1000ms infinite;
+}
+
+@keyframes jump {
+  0%{bottom: 33.5%}
+  30%{bottom: 53.5%}
+  70%{bottom: 53.5%}
+  100%{bottom: 33.5%}
+}
+
+@keyframes travel-left {
+  0%{left: 120%}
+  13%{left: 100%}
+  26%{left: 80%}
+  39%{left: 60%}
+  52%{left: 40%}
+  65%{left: 20%}
+  78%{left: 0%}
+  100%{left: -20%} 
+
 }

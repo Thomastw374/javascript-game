@@ -1,5 +1,6 @@
 const characterSprite = document.querySelector(".main__game-character");
 const floorSprite = document.querySelector(".main__game-floor");
+const characterContainer = document.querySelector(".main__character-container")
 
 let i = 0;
 function animateCharacter() {
@@ -11,7 +12,7 @@ function animateCharacter() {
   }
 }
 
-setInterval(animateCharacter, 100);
+let charRunTimer = setInterval(animateCharacter, 100);
 
 let j = 0;
 
@@ -26,13 +27,26 @@ function animateFloor() {
 
 setInterval(animateFloor, 50);
 
-let k = 0
+
 const handleJump = (event) => {
   console.log("event triggered")
-    clearInterval(animateCharacter)
+  clearInterval(animateCharacter)
+  characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/run-animation/tile00${i}.png`;
+  
+  if (characterContainer.id != "animate-jump") {
+    characterContainer.id = "animate-jump"
+  }
+  setTimeout(function(){
+    characterContainer.id = ""}, 
+    500
+  )
 
 
 }
 
 
-document.addEventListener("keydown", handleJump)
+document.addEventListener("keydown", function() {
+  charRunTimer = clearInterval(animateCharacter);
+  handleJump() 
+})
+
