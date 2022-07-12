@@ -80,6 +80,9 @@
   z-index: 2;
   position: fixed;
   background-color: transparent;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
 }
 .main .main__obstacle-container {
   display: flex;
@@ -87,6 +90,9 @@
   z-index: 2;
   position: absolute;
   left: 120%;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
 }
 .main .main__obstacle-container--0 {
   bottom: 22.5%;

@@ -94,7 +94,8 @@
       height: auto;
       z-index: 2;
       position: fixed;
-      background-color: transparent;    
+      background-color: transparent;   
+      image-rendering: pixelated; 
 
     }
 
@@ -104,6 +105,7 @@
       z-index: 2;
       position: absolute;
       left: 120%;
+      image-rendering: pixelated; 
 
       &--0 {
         bottom: 22.5%;
