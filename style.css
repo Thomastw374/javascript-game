@@ -137,6 +137,22 @@
   font-weight: bold;
   font-family: sans-serif;
 }
+.main .main__game-over-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(97, 171, 97);
+}
+.main .main__play-retry-button {
+  height: 2rem;
+  width: 3rem;
+  background-color: rgb(67, 175, 215);
+  font-family: sans-serif;
+}
 
 #animate-jump {
   -webkit-animation: jump 600ms infinite;
