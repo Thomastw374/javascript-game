@@ -4,8 +4,9 @@ const floorSprite = document.querySelector(".main__game-floor");
 const obstacleContainer = document.querySelector(".main__obstacle-container");
 const obstacleSprite = document.querySelector(".main__game-obstacle");
 const pointCounter = document.querySelector(".main__point-counter");
-const playRetryButton = document.querySelector(".main__play-retry-button")
-const gameOverScreen = document.querySelector(".main__game-over-screen")
+const playRetryButton = document.querySelector(".main__play-retry-button");
+const gameOverScreen = document.querySelector(".main__game-over-screen");
+const gameWindow = document.querySelector(".main__game-window");
 
 // cycles through the sprites.
 let i = 0;
@@ -17,8 +18,6 @@ function animateCharacter() {
     i -= 5;
   }
 }
-
-
 
 let l = 0;
 let pointCount = 0;
@@ -42,8 +41,6 @@ function animateObstacles() {
   pointCounter.innerHTML = `POINTS: ${pointCount}`;
 }
 
-
-
 let j = 0;
 
 function animateFloor() {
@@ -54,8 +51,6 @@ function animateFloor() {
     j -= 3;
   }
 }
-
-
 
 const handleJump = (event) => {
   console.log("event triggered");
@@ -83,24 +78,26 @@ console.dir(
 );
 
 const handlePlayRetryPress = (event) => {
-  setInterval(animateFloor, 50);
-  setInterval(checkForCollision, 100);
-  setInterval(animateObstacles, 1200);
-  setInterval(animateCharacter, 100);
-  gameOverScreen.remove(
-  playRetryButton.remove()
-  )
-}
+  floorAnimation = setInterval(animateFloor, 50);
+  collision = setInterval(checkForCollision, 100);
+  obstacleAnimation = setInterval(animateObstacles, 1200);
+  characterAnimation = setInterval(animateCharacter, 100);
+  gameOverScreen.style.display = "none";
+  playRetryButton.style.display = "none";
+};
 
-// const gameOver = () => {
-//   setInterval(animateFloor, 10000);
-//   setInterval(checkForCollision, 10000);
-//   setInterval(animateObstacles, 12000);
-//   setInterval(animateCharacter, 10000);
-// }
+const gameOver = () => {
+  clearInterval(floorAnimation);
+  clearInterval(obstacleAnimation);
+  clearInterval(characterAnimation);
+  playRetryButton.innerText = "Retry";
+  gameOverScreen.style.display = "flex";
+  playRetryButton.style.display = "block";
+  pointCount = 0;
+  pointCounter.innerHTML = `POINTS: ${pointCount}`;
+};
 
 const checkForCollision = () => {
-  
   let rect1 = {
     x: Number(getComputedStyle(obstacleContainer).left.slice(0, -2)),
     y: Number(getComputedStyle(obstacleContainer).bottom.slice(0, -2)),
@@ -110,24 +107,20 @@ const checkForCollision = () => {
 
   let rect2 = {
     x: Number(getComputedStyle(characterContainer).left.slice(0, -2)),
-    y: Number(getComputedStyle(characterContainer).bottom.slice(0,-2)),
+    y: Number(getComputedStyle(characterContainer).bottom.slice(0, -2)),
     width: 50,
     height: 50,
   };
-  console.log(rect1.x, rect2.x)
+  console.log(rect1.x, rect2.x);
   if (
     rect1.x < rect2.x + rect2.width &&
     rect1.x + rect1.width > rect2.x &&
     rect1.y < rect2.y + rect2.height &&
     rect1.y + rect1.height > rect2.y
   ) {
-    gameOver()
+    gameOver();
   }
 };
 // be able to explain this
 
-
-
-
-
-playRetryButton.addEventListener("click", handlePlayRetryPress)
+playRetryButton.addEventListener("click", handlePlayRetryPress);
