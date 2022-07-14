@@ -7,8 +7,9 @@
   font-family: "cormorant", "inter", sans-serif;
 }
 
-.intro-text-container .intro-text-container__text {
+#instruction-text {
   color: white;
+  margin: 2rem;
 }
 
 .header {

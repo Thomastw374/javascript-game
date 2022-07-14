@@ -10,12 +10,10 @@
     font-family: "cormorant", "inter", sans-serif;
 }
 
-.intro-text-container {
-  .intro-text-container__text {
-    color: $primary-color;
-  }
+#instruction-text {
+  color: $primary-color;
+  margin: 2rem;
 }
-
 
 .header {
   margin: 1.9rem;
