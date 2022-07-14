@@ -54,6 +54,7 @@ const animateObstacles = () => {
 
 // On keydown/screen tap or click the run animation is stopped and the image is changed to a jump sprite. If statement adds a class that is animated by css which is removed following a timeout.
 const handleJump = (event) => {
+  removeJumpEventListeners()
   clearInterval(characterAnimation);
   characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/jump-animation/jump0.png`;
 
@@ -63,11 +64,14 @@ const handleJump = (event) => {
   setTimeout(function () {
     characterContainer.id = "";
     handlePlayRetryPressChar()
+    addJumpEventListeners();
   }, 500);
+  
 };
 
 // Activates set interval functions that animate elements. Removes play/retry screen.
 const handlePlayRetryPress = (event) => {
+  addJumpEventListeners();
   floorAnimation = setInterval(animateFloor, 50);
   collision = setInterval(checkForCollision, 100);
   obstacleAnimation = setInterval(animateObstacles, 1200);
@@ -122,9 +126,19 @@ const checkForCollision = () => {
   }
 };
 
+const addJumpEventListeners = () => {
+  document.addEventListener("keydown", handleJump);
+  gameBackground.addEventListener("click", handleJump);
+  characterSprite.addEventListener("click", handleJump);
+  floorSprite.addEventListener("click", handleJump);
+};
+
+const removeJumpEventListeners = () => {
+  document.removeEventListener("keydown", handleJump);
+  gameBackground.removeEventListener("click", handleJump);
+  characterSprite.removeEventListener("click", handleJump);
+  floorSprite.removeEventListener("click", handleJump);
+};
 playRetryButton.addEventListener("click", handlePlayRetryPress);
 playRetryButton.addEventListener("click", handlePlayRetryPressChar);
-document.addEventListener("keydown", handleJump)
-gameBackground.addEventListener("click", handleJump);
-characterSprite.addEventListener("click", handleJump);
-floorSprite.addEventListener("click", handleJump);
+
