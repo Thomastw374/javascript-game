@@ -10,7 +10,7 @@ const gameWindow = document.querySelector(".main__game-window");
 
 // cycles through the sprites.
 let i = 0;
-function animateCharacter() {
+const animateCharacter = () => {
   characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/run-animation/tile00${i}.png`;
   if (i < 5) {
     i += 1;
@@ -21,7 +21,7 @@ function animateCharacter() {
 
 let l = 0;
 let pointCount = 0;
-function animateObstacles() {
+const animateObstacles = () => {
   obstacleSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/obstacles/${l}.png`;
   obstacleContainer.id = "animate-obstacle";
   obstacleContainer.className = `main__obstacle-container main__obstacle-container--${l}`;
@@ -33,7 +33,6 @@ function animateObstacles() {
   if (l == 6) {
     l -= 6;
   }
-
   setTimeout(function () {
     pointCount += 10;
   }, 900);
@@ -42,8 +41,7 @@ function animateObstacles() {
 }
 
 let j = 0;
-
-function animateFloor() {
+const animateFloor = () => {
   floorSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/floor-animation/floor${j}.png`;
   if (j < 3) {
     j += 1;
@@ -54,7 +52,7 @@ function animateFloor() {
 
 const handleJump = (event) => {
   console.log("event triggered");
-  clearInterval(animateCharacter);
+  clearInterval(characterAnimation);
   characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/jump-animation/jump0.png`;
 
   if (characterContainer.id != "animate-jump") {
@@ -62,29 +60,27 @@ const handleJump = (event) => {
   }
   setTimeout(function () {
     characterContainer.id = "";
+    handlePlayRetryPressChar()
   }, 500);
 };
 
-document.addEventListener("keydown", function () {
-  charRunTimer = clearInterval(animateCharacter);
-  handleJump();
-});
 // can process these to get my x and y for collision boxes, on collision we'll add in an element that covers the screen. Then a retry button that sets the points to 0 and clears it. Have difficulty scale with point count.
 
 // left css property is a string, we want it to be a number to use our math on it
-console.dir(
-  Number(getComputedStyle(obstacleContainer).left.slice(0, -2)) +
-    Number(getComputedStyle(obstacleContainer).left.slice(0, -2))
-);
 
 const handlePlayRetryPress = (event) => {
   floorAnimation = setInterval(animateFloor, 50);
   collision = setInterval(checkForCollision, 100);
   obstacleAnimation = setInterval(animateObstacles, 1200);
-  characterAnimation = setInterval(animateCharacter, 100);
   gameOverScreen.style.display = "none";
   playRetryButton.style.display = "none";
+  characterSprite.style.display = "block";
+  obstacleSprite.style.display = "block";
 };
+
+const handlePlayRetryPressChar = (event) => {
+   characterAnimation = setInterval(animateCharacter, 100);
+}
 
 const gameOver = () => {
   clearInterval(floorAnimation);
@@ -93,30 +89,32 @@ const gameOver = () => {
   playRetryButton.innerText = "Retry";
   gameOverScreen.style.display = "flex";
   playRetryButton.style.display = "block";
+  characterSprite.style.display = "none";
+  obstacleSprite.style.display = "none";
   pointCount = 0;
-  pointCounter.innerHTML = `POINTS: ${pointCount}`;
+  pointCounter.innerText = `POINTS: ${pointCount}`;
 };
 
 const checkForCollision = () => {
-  let rect1 = {
+  let obstacleHitbox = {
     x: Number(getComputedStyle(obstacleContainer).left.slice(0, -2)),
     y: Number(getComputedStyle(obstacleContainer).bottom.slice(0, -2)),
     width: 50,
-    height: 50,
+    height: 70,
   };
 
-  let rect2 = {
+  let characterHitbox = {
     x: Number(getComputedStyle(characterContainer).left.slice(0, -2)),
     y: Number(getComputedStyle(characterContainer).bottom.slice(0, -2)),
     width: 50,
     height: 50,
   };
-  console.log(rect1.x, rect2.x);
+  console.log(obstacleHitbox.x, characterHitbox.x);
   if (
-    rect1.x < rect2.x + rect2.width &&
-    rect1.x + rect1.width > rect2.x &&
-    rect1.y < rect2.y + rect2.height &&
-    rect1.y + rect1.height > rect2.y
+    obstacleHitbox.x < characterHitbox.x + characterHitbox.width &&
+    obstacleHitbox.x + obstacleHitbox.width > characterHitbox.x &&
+    obstacleHitbox.y < characterHitbox.y + characterHitbox.height &&
+    obstacleHitbox.y + obstacleHitbox.height > characterHitbox.y
   ) {
     gameOver();
   }
@@ -124,3 +122,6 @@ const checkForCollision = () => {
 // be able to explain this
 
 playRetryButton.addEventListener("click", handlePlayRetryPress);
+playRetryButton.addEventListener("click", handlePlayRetryPressChar);
+document.addEventListener("keydown", handleJump)
+gameWindow.addEventListener("click", handleJump);

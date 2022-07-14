@@ -83,6 +83,7 @@
   -ms-interpolation-mode: nearest-neighbor;
       image-rendering: -moz-crisp-edges;
       image-rendering: pixelated;
+  display: none;
 }
 .main .main__obstacle-container {
   display: flex;
@@ -118,6 +119,7 @@
   z-index: 2;
   position: fixed;
   background-color: transparent;
+  display: none;
 }
 .main .main__obstacle-hider {
   width: 100%;
@@ -145,12 +147,18 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: rgb(97, 171, 97);
+  background-color: black;
+  opacity: 30%;
 }
 .main .main__play-retry-button {
   height: 2rem;
   width: 3rem;
-  background-color: rgb(67, 175, 215);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgb(16, 214, 16);
+  z-index: 3;
   font-family: sans-serif;
 }
 
