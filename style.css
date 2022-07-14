@@ -161,8 +161,9 @@
   justify-content: center;
   align-items: center;
   position: absolute;
+  color: rgb(255, 0, 0);
   background-color: rgb(16, 214, 16);
-  z-index: 3;
+  z-index: 4;
   font-family: sans-serif;
 }
 

@@ -9,7 +9,7 @@ const gameOverScreen = document.querySelector(".main__game-over-screen");
 const gameWindow = document.querySelector(".main__game-window");
 const gameBackground = document.querySelector(".main__game-background")
 
-// cycles through the sprites.
+// These functions are called rapidly by a set interval. Iterating through images, giving the affect of animation.
 let i = 0;
 const animateCharacter = () => {
   characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/run-animation/tile00${i}.png`;
@@ -20,13 +20,24 @@ const animateCharacter = () => {
   }
 }
 
+let j = 0;
+const animateFloor = () => {
+  floorSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/floor-animation/floor${j}.png`;
+  if (j < 3) {
+    j += 1;
+  } else if ((j = 3)) {
+    j -= 3;
+  }
+};
+
+// When called this function changes the image of an obstacle element hidden off screen and runs a css animation passing the obstacle from right to left.
 let l = 0;
 let pointCount = 0;
 const animateObstacles = () => {
   obstacleSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/obstacles/${l}.png`;
   obstacleContainer.id = "animate-obstacle";
   obstacleContainer.className = `main__obstacle-container main__obstacle-container--${l}`;
-  // also have a different class for each item corresponding to the correct css. Because pics come in at diff heights need to change css.
+
   setTimeout(function () {
     obstacleContainer.id = "";
   }, 900);
@@ -41,18 +52,8 @@ const animateObstacles = () => {
   pointCounter.innerHTML = `POINTS: ${pointCount}`;
 }
 
-let j = 0;
-const animateFloor = () => {
-  floorSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/floor-animation/floor${j}.png`;
-  if (j < 3) {
-    j += 1;
-  } else if ((j = 3)) {
-    j -= 3;
-  }
-}
-
+// On keydown/screen tap or click the run animation is stopped and the image is changed to a jump sprite. If statement adds a class that is animated by css which is removed following a timeout.
 const handleJump = (event) => {
-  console.log("event triggered");
   clearInterval(characterAnimation);
   characterSprite.src = `./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/jump-animation/jump0.png`;
 
@@ -65,10 +66,7 @@ const handleJump = (event) => {
   }, 500);
 };
 
-// can process these to get my x and y for collision boxes, on collision we'll add in an element that covers the screen. Then a retry button that sets the points to 0 and clears it. Have difficulty scale with point count.
-
-// left css property is a string, we want it to be a number to use our math on it
-
+// Activates set interval functions that animate elements. Removes play/retry screen.
 const handlePlayRetryPress = (event) => {
   floorAnimation = setInterval(animateFloor, 50);
   collision = setInterval(checkForCollision, 100);
@@ -79,10 +77,12 @@ const handlePlayRetryPress = (event) => {
   obstacleSprite.style.display = "block";
 };
 
+// Made this a separate function so that I could call it after a jump occurs. If I just tried to use a standalone setInterval function to restart the run animation it would cause an increase in the animation speed with each jump.
 const handlePlayRetryPressChar = (event) => {
    characterAnimation = setInterval(animateCharacter, 100);
 }
 
+// Resets to initial game state and shows retry screen, called in the event of a collision.
 const gameOver = () => {
   clearInterval(floorAnimation);
   clearInterval(obstacleAnimation);
@@ -96,6 +96,7 @@ const gameOver = () => {
   pointCounter.innerText = `POINTS: ${pointCount}`;
 };
 
+// a function that essentially creates rectangles around collision items and an if statement that detects these rectangles have overlapped. This signifies collision and calls the gameover function.
 const checkForCollision = () => {
   let obstacleHitbox = {
     x: Number(getComputedStyle(obstacleContainer).left.slice(0, -2)),
@@ -110,7 +111,7 @@ const checkForCollision = () => {
     width: 50,
     height: 50,
   };
-  console.log(obstacleHitbox.x, characterHitbox.x);
+
   if (
     obstacleHitbox.x < characterHitbox.x + characterHitbox.width &&
     obstacleHitbox.x + obstacleHitbox.width > characterHitbox.x &&
@@ -120,7 +121,6 @@ const checkForCollision = () => {
     gameOver();
   }
 };
-// be able to explain this
 
 playRetryButton.addEventListener("click", handlePlayRetryPress);
 playRetryButton.addEventListener("click", handlePlayRetryPressChar);
