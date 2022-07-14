@@ -7,6 +7,10 @@
   font-family: "cormorant", "inter", sans-serif;
 }
 
+.intro-text-container .intro-text-container__text {
+  color: white;
+}
+
 .header {
   margin: 1.9rem;
   display: flex;
@@ -251,5 +255,73 @@
   }
   100% {
     left: -20%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main .main__game-window {
+    position: relative;
+  }
+  .main .main__game-background {
+    width: 28rem;
+    height: auto;
+    z-index: 1;
+  }
+  .main .main__game-background-container {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+  .main .main__game-floor-container {
+    display: flex;
+    justify-content: center;
+  }
+  .main .main__game-floor {
+    width: 28rem;
+  }
+  .main .main__character-container {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    position: absolute;
+    bottom: 33.5%;
+    left: 25%;
+  }
+  .main .main__game-character {
+    width: 6.36rem;
+    height: auto;
+    z-index: 2;
+    position: fixed;
+  }
+  .main .main__obstacle-container {
+    display: flex;
+    justify-content: center;
+    left: 120%;
+  }
+  .main .main__obstacle-container--0 {
+    bottom: 22.5%;
+  }
+  .main .main__obstacle-container--1 {
+    bottom: 33.6%;
+  }
+  .main .main__obstacle-container--2 {
+    bottom: 21.5%;
+  }
+  .main .main__obstacle-container--3 {
+    bottom: 16.7%;
+  }
+  .main .main__obstacle-container--4 {
+    bottom: 23%;
+  }
+  .main .main__obstacle-container--5 {
+    bottom: 22.5%;
+  }
+  .main .main__game-obstacle {
+    width: 6.36rem;
+    height: auto;
   }
 }

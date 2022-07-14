@@ -7,6 +7,7 @@ const pointCounter = document.querySelector(".main__point-counter");
 const playRetryButton = document.querySelector(".main__play-retry-button");
 const gameOverScreen = document.querySelector(".main__game-over-screen");
 const gameWindow = document.querySelector(".main__game-window");
+const gameBackground = document.querySelector(".main__game-background")
 
 // cycles through the sprites.
 let i = 0;
@@ -124,4 +125,6 @@ const checkForCollision = () => {
 playRetryButton.addEventListener("click", handlePlayRetryPress);
 playRetryButton.addEventListener("click", handlePlayRetryPressChar);
 document.addEventListener("keydown", handleJump)
-gameWindow.addEventListener("click", handleJump);
+gameBackground.addEventListener("click", handleJump);
+characterSprite.addEventListener("click", handleJump);
+floorSprite.addEventListener("click", handleJump);
