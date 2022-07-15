@@ -8,6 +8,7 @@ const playRetryButton = document.querySelector(".main__play-retry-button");
 const gameOverScreen = document.querySelector(".main__game-over-screen");
 const gameWindow = document.querySelector(".main__game-window");
 const gameBackground = document.querySelector(".main__game-background")
+const gameTitle = document.querySelector(".main__game-title")
 
 // These functions are called rapidly by a set interval. Iterating through images, giving the affect of animation.
 let i = 0;
@@ -52,7 +53,7 @@ const animateObstacles = () => {
   pointCounter.innerHTML = `POINTS: ${pointCount}`;
 }
 
-// On keydown/screen tap or click the run animation is stopped and the image is changed to a jump sprite. If statement adds a class that is animated by css which is removed following a timeout.
+// On keydown/screen tap or click the run animation is stopped and the image is changed to a jump sprite. If statement adds a class that is animated by css which is removed following a timeout. Event listeners removed and added to avoid spamming jump.
 const handleJump = (event) => {
   removeJumpEventListeners()
   clearInterval(characterAnimation);
@@ -75,6 +76,7 @@ const handlePlayRetryPress = (event) => {
   floorAnimation = setInterval(animateFloor, 50);
   collision = setInterval(checkForCollision, 100);
   obstacleAnimation = setInterval(animateObstacles, 1200);
+  gameTitle.remove()
   gameOverScreen.style.display = "none";
   playRetryButton.style.display = "none";
   characterSprite.style.display = "block";
@@ -106,7 +108,7 @@ const checkForCollision = () => {
     x: Number(getComputedStyle(obstacleContainer).left.slice(0, -2)),
     y: Number(getComputedStyle(obstacleContainer).bottom.slice(0, -2)),
     width: 50,
-    height: 70,
+    height: 85,
   };
 
   let characterHitbox = {
@@ -139,6 +141,7 @@ const removeJumpEventListeners = () => {
   characterSprite.removeEventListener("click", handleJump);
   floorSprite.removeEventListener("click", handleJump);
 };
+
 playRetryButton.addEventListener("click", handlePlayRetryPress);
 playRetryButton.addEventListener("click", handlePlayRetryPressChar);
 

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__title">JAVASCRIPT<span class="header__title header__title--alt-color"> GAME</span class:="header__title"></h1>
+        <h1 class="header__title">PARK<span class="header__title header__title--alt-color"> RUNNER</span class:="header__title"></h1>
         
         <div class="header__menu">
             <div class="header__rectangle-1"></div>
@@ -25,23 +25,26 @@
     
         </div>
     </header>
-    <div class="intro-text-container"></div>
-    <p id="instruction-text">INSTRUCTIONS: Press enter or tap screen to jump. </p>
-    <br>
-
+    <div class="text-container">
+        <p class="text-container__instruction-text">Park Runner is a 2D obstacle hopping game made using HTML, CSS and vanilla Javascript </p>
+    </div>
+    
+    
     <main class="main">
         
         <div class="main__obstacle-hider"></div>
         <div class="main__game-window">
-            <div class="main__game-over-screen">
-                <button class="main__play-retry-button">Play</button>
-            </div>
+            <img class="main__game-title" src="./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/parkrunner.png" alt="Park Runner">
 
+            <button class="main__play-retry-button">Play</button>
+            
+            <div class="main__game-over-screen"></div>
+            
             <div class="main__point-counter">POINTS:</div>
             <div class="main__game-background-container">
                 <img class="main__game-background" src="./craftpix-net-798594-free-green-zone-tileset-pixel-art/2 Background/Day/Background.png" alt="">
             </div>
-
+            
             <div class="main__character-container">
                 <img class="main__game-character" src="./craftpix-net-798594-free-green-zone-tileset-pixel-art/Assets/run-animation/tile001.png" alt="">
             </div>
@@ -53,10 +56,13 @@
             </div>
         </div>
         <div class="main__obstacle-hider"></div>
+        
     </main>
+    <div class="text-container">
+        <p class="text-container__instruction-text">INSTRUCTIONS: Press space or tap screen to jump. </p>
+    </div>
 
     <footer>
-
     </footer>
     <script src="./script.js"></script>
 </body>

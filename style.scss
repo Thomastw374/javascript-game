@@ -9,11 +9,15 @@
     background-color: $background-color;
     font-family: "cormorant", "inter", sans-serif;
 }
-
-#instruction-text {
+.text-container {
+  display: flex;
+  justify-content: center;
+  .text-container__instruction-text {
   color: $primary-color;
-  margin: 2rem;
+  margin: 1rem;
 }
+}
+
 
 .header {
   margin: 1.9rem;
@@ -154,6 +158,18 @@
       z-index: 3;
     }
 
+    .main__game-title {
+      display: flex;
+      position: absolute;
+      z-index: 4;
+      width: 20rem;
+      margin: 0.5rem;
+      margin-inline: 1rem;
+      height: auto;
+      background-color: transparent;
+      image-rendering: pixelated;
+    }
+
     .main__point-counter {
       display: flex;
       justify-content: center;
@@ -186,10 +202,14 @@
       justify-content: center;
       align-items: center;
       position: absolute;
-      color: rgb(255, 0, 0);
-      background-color: rgb(16, 214, 16);
+      margin-left: 9.5rem;
+      margin-top: 11rem;
+      color: black;
+      font-weight: bold;
+      background-color: rgb(65, 154, 255);
       z-index: 4;
       font-family: sans-serif;
+      border-radius: 15%;
     }
 }
 
@@ -234,6 +254,11 @@
           width: 28rem;
           height: auto;
           z-index: 1;
+      }
+
+      .main__game-title {
+        width: 26rem;
+        margin: 0.8rem;
       }
 
       .main__game-background-container {
@@ -301,6 +326,15 @@
       .main__game-obstacle {
         width: 6.36rem;
         height: auto;
+      }
+
+      .main__play-retry-button {
+        margin-left: 12rem;
+        margin-top: 14rem;
+        font-size: 1.3rem;
+        width: 4rem;
+        height: 2.2rem;
+        border-radius: 10%;
       }
     }
 }
