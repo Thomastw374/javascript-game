@@ -1,0 +1,38 @@
+.header {
+  margin: 1.9rem;
+  display: flex;
+  justify-content: space-between;
+  color: $primary-color;
+  margin-bottom: 3.5rem;
+
+  .header__title {
+    font: $title-font;
+    font-size: 1.3rem;
+    &--alt-color {
+      color: $secondary-color;
+    }
+  }
+
+  .header__rectangle-1 {
+    width: 1.56rem;
+    height: 0.06rem;
+    background: #ffffff;
+    margin-bottom: 0.2rem;
+  }
+
+  .header__rectangle-2 {
+    width: 1.13rem;
+    height: 0.06rem;
+    background: #ffffff;
+  }
+
+  .header__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header__menu-alternative {
+    display: none;
+  }
+}

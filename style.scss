@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'header';
+@import 'animations';
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@400;700&family=Inter&display=swap");
 
@@ -19,44 +21,7 @@
 }
 
 
-.header {
-  margin: 1.9rem;
-  display: flex;
-  justify-content: space-between;
-  color: $primary-color;
-  margin-bottom: 3.5rem;
 
-  .header__title {
-    font: $title-font;
-    font-size: 1.3rem;
-    &--alt-color {
-      color: $secondary-color;
-    }
-  }
-
-  .header__rectangle-1 {
-    width: 1.56rem;
-    height: 0.06rem;
-    background: #ffffff;
-    margin-bottom: 0.2rem;
-  }
-
-  .header__rectangle-2 {
-    width: 1.13rem;
-    height: 0.06rem;
-    background: #ffffff;
-  }
-
-  .header__menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .header__menu-alternative {
-    display: none;
-  }
-}
 
 
 .main {
@@ -213,32 +178,6 @@
     }
 }
 
-#animate-jump {
-  animation: jump 600ms infinite;
-}
-
-#animate-obstacle {
-  animation: travel-left 1000ms infinite;
-}
-
-@keyframes jump {
-  0%{bottom: 33.5%}
-  30%{bottom: 55.5%}
-  70%{bottom: 55.5%}
-  100%{bottom: 33.5%} 
-}
-
-@keyframes travel-left {
-  0%{left: 120%}
-  13%{left: 100%}
-  26%{left: 80%}
-  39%{left: 60%}
-  52%{left: 40%}
-  65%{left: 20%}
-  78%{left: 0%}
-  100%{left: -20%}
-
-}
 
 @media screen and (min-width: 768px) {
     .main {

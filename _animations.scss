@@ -1,0 +1,27 @@
+
+#animate-jump {
+  animation: jump 600ms infinite;
+}
+
+#animate-obstacle {
+  animation: travel-left 1000ms infinite;
+}
+
+@keyframes jump {
+  0%{bottom: 33.5%}
+  30%{bottom: 55.5%}
+  70%{bottom: 55.5%}
+  100%{bottom: 33.5%} 
+}
+
+@keyframes travel-left {
+  0%{left: 120%}
+  13%{left: 100%}
+  26%{left: 80%}
+  39%{left: 60%}
+  52%{left: 40%}
+  65%{left: 20%}
+  78%{left: 0%}
+  100%{left: -20%}
+
+}
